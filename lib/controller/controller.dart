@@ -21,7 +21,7 @@ class MainController extends GetxController {
 
   //for main pages
   var stepper = ["일정 선택","핸드폰 고정","복약 녹화"];
-  var currentStep = 1;
+  var currentStep = 0;
   var nowCheckedIndex = 0.obs;
   var dateSelection = [{
     "date":"10/1(월) 아침",
@@ -39,6 +39,15 @@ class MainController extends GetxController {
     "date":"10/2(화) 점심",
     "isDone":false
   }];
+
+  //
+  final meal =true.obs;
+  var researchIndex = 0.obs;
+  var userSymtomController = TextEditingController(text: "");
+  var researchCheck0 = false.obs;
+  var researchCheck1 = false.obs;
+  var researchCheck2 = false.obs;
+  var researchCheck3 = false.obs;
   //Cam
   CameraController? cameraController;
   var camInitialized = false.obs;

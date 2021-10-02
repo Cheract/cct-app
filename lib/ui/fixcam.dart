@@ -4,8 +4,8 @@ import 'package:status_change/status_change.dart';
 import 'package:untitled_cct/controller/controller.dart';
 import 'package:untitled_cct/ui/utils.dart';
 
-class Plan extends GetView<MainController> {
-  const Plan({Key? key}) : super(key: key);
+class FixCam extends GetView<MainController> {
+  const FixCam({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,16 +29,16 @@ class Plan extends GetView<MainController> {
                       ),
 
                       SizedBox(height: Get.height * 0.05),
-                        Column(
-                          children: [
-                            Container(width: Get.width*.7, height: Get.height*.5,color: Colors.transparent,
-                            child:Scrollbar(
-                              child: _dateList(),
-                            )
-                            ),
-                            Obx(()=>_startButton())
-                          ],
-                        )
+                      Column(
+                        children: [
+                          Container(width: Get.width*.7, height: Get.height*.5,color: Colors.transparent,
+                              child:Scrollbar(
+                                child: _dateList(),
+                              )
+                          ),
+                          Obx(()=>_startButton())
+                        ],
+                      )
 
                     ],),
                   ),
@@ -126,29 +126,29 @@ class Plan extends GetView<MainController> {
               ),
             ),
           ):Container(
-            height: 72,
+              height: 72,
 
-            child: Obx(()=>Card(
-              color: index==controller.nowCheckedIndex.value?Color(0xffEBECFF):null,
-              shape:RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8.0),
-                side:BorderSide(
-                  color: Colors.grey,
-                  width: 2.0,
+              child: Obx(()=>Card(
+                color: index==controller.nowCheckedIndex.value?Color(0xffEBECFF):null,
+                shape:RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                  side:BorderSide(
+                    color: Colors.grey,
+                    width: 2.0,
+                  ),
                 ),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(
-                      width: Get.width*.4,
-                      child: Text("${locCon["date"]}",style:TextStyle(fontSize:18,color:Colors.black))),
-                  SizedBox(
-                      width: Get.width*.2,
-                      child: SizedBox(width:24,height:24))
-                ],
-              ),
-            ),)
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                        width: Get.width*.4,
+                        child: Text("${locCon["date"]}",style:TextStyle(fontSize:18,color:Colors.black))),
+                    SizedBox(
+                        width: Get.width*.2,
+                        child: SizedBox(width:24,height:24))
+                  ],
+                ),
+              ),)
           ),
         );
       },
