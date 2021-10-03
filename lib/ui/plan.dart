@@ -48,7 +48,7 @@ class Plan extends GetView<MainController> {
                       Align(
                           alignment: Alignment.center,
                           child: StepProgressView(
-                              curStep: controller.currentStep,
+                              curStep: 1,
                               width: Get.width * 0.7,
                               color: Color(0xff373EFF),
                               titles: controller.stepper)),
@@ -76,7 +76,7 @@ class Plan extends GetView<MainController> {
           padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
           onPressed: () async {
             if(controller.dateSelection[controller.nowCheckedIndex.value]["isDone"]==false){
-              controller.currentStep=1;
+              controller.currentStep=2;
               Get.toNamed("/research");
             }else{
 
