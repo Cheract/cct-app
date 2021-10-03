@@ -1,6 +1,9 @@
+import 'dart:async';
+import 'dart:io';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:stop_watch_timer/stop_watch_timer.dart';
 import 'package:untitled_cct/repository/repository.dart';
 
 class MainController extends GetxController {
@@ -55,10 +58,26 @@ class MainController extends GetxController {
   var isRecognized = false.obs;
   var userFaceInformation = "".obs;
 
+  var start = 60.obs;
+  Timer? timer;
+  void startTimer() {
+    const oneSec = const Duration(seconds: 1);
+    timer=Timer.periodic(
+      oneSec,
+          (Timer timer) {
+        if (start.value == 0) {
+          timer.cancel();
+        } else {
+          start(start.value-1);
+        }
+      },
+    );
+  }
+
   Future<void> _initCamera() async {
     final cameras = await availableCameras();
     if (cameras.length >= 0) {
-      cameraController = CameraController(cameras.first, ResolutionPreset.max);
+      cameraController = CameraController(cameras.last, ResolutionPreset.max);
 
       cameraController!.initialize().then((_) {
         if (!cameraController!.value.isInitialized) {
@@ -68,7 +87,13 @@ class MainController extends GetxController {
       });
     }
   }
-
+  Future<void> stopCameraRecording()async{
+    XFile videofile = await cameraController!.stopVideoRecording();
+    print(videofile.path);
+    //await GallerySaver.saveVideo(videofile.path);
+    var recVid = File(videofile.path);
+    print(recVid);
+  }
   @override
   Future<void> onInit() async {
     super.onInit();
