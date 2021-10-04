@@ -68,6 +68,7 @@ flutter:
     - images/smile.png
     - images/bad_feeling.png
     - images/complete.png
+    - images/exclude.png
     - images/loading.png
     - images/loading_point.png
 

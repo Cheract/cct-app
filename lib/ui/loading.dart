@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:untitled_cct/controller/controller.dart';
+import 'package:untitled_cct/ui/complete.dart';
 
 class Loading extends GetView<CamController> {
   const Loading({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    controller.DiagTimer(context,dialog:customedDialog(context));
+    //controller.DiagTimer(context,dialog:customedDialog(context));//실패시
+    controller.DiagSuccessTimer(context,dialog:Complete()); //성공시
 
     return Scaffold(
         backgroundColor: Color(0xff353648),
@@ -76,7 +78,7 @@ class Loading extends GetView<CamController> {
                 minWidth: Get.width*.25,
                 padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
                 onPressed: () async {
-                  Get.offAndToNamed("/");
+                  Get.offNamed("/plan");
                   //Navigator.pop(context);
                 },
                 child: Text(
@@ -95,6 +97,7 @@ class Loading extends GetView<CamController> {
                 minWidth: Get.width*.45,
                 padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
                 onPressed: () async {
+                  Get.offNamed("/fixcam");
                 },
                 child: Text(
                   "재시도",

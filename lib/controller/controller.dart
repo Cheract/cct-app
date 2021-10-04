@@ -69,6 +69,7 @@ class CamController extends GetxController{
   Timer? timer;
 
   var diagTime = 3.obs;
+  var diagSuccessTime = 3.obs;
 
   void startTimer() {
     const oneSec = const Duration(seconds: 1);
@@ -94,6 +95,21 @@ class CamController extends GetxController{
           timer.cancel();
         } else {
           diagTime(diagTime.value-1);
+        }
+      },
+    );
+  }
+
+  void DiagSuccessTimer(context,{dialog}) {
+    const oneSec = const Duration(seconds: 1);
+    timer=Timer.periodic(
+      oneSec,
+          (Timer timer) {
+        if (diagSuccessTime.value == 0) {
+          showPopupDiag(context,dialog:dialog);
+          timer.cancel();
+        } else {
+          diagSuccessTime(diagSuccessTime.value-1);
         }
       },
     );

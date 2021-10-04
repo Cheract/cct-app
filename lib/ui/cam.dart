@@ -48,8 +48,8 @@ class Cam extends GetView<CamController> {
                               "${(controller.start.value/60).toInt()}:"
                                   "${(controller.start.value-(controller.start.value/60).toInt()*controller.start.value).toString().padLeft(2,'0')}"
                               ,style:TextStyle(fontSize:48,color:Colors.white,fontWeight: FontWeight.bold));}),
-    Text("자동 촬영 중 입니다.",style:TextStyle(fontSize:20,color:Colors.white))
-    ,_submitButton(),
+                        Text("자동 촬영 중 입니다.",style:TextStyle(fontSize:20,color:Colors.white)),
+                        _submitButton(),
                       ],
                     ))),
           ],

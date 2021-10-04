@@ -133,7 +133,7 @@ class FixCam extends GetView<CamController> {
               minWidth: Get.width,
               padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
               onPressed: () async {
-
+                  Get.back();
               },
               child: Text(
                 "취소",
