@@ -3,7 +3,10 @@ import 'dart:io';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:untitled_cct/binding/binding.dart';
 import 'package:untitled_cct/controller/controller.dart';
+
+import 'loading.dart';
 
 
 
@@ -39,6 +42,7 @@ class Cam extends GetView<MainController> {
                         Obx((){
                           if(controller.start.value==0){
                             controller.stopCameraRecording();
+                            Get.to(Loading(),binding: MainBinding());
                           }
                           return Text(
                               "${(controller.start.value/60).toInt()}:"
@@ -68,7 +72,7 @@ class Cam extends GetView<MainController> {
           onPressed: () async {
             controller.timer!.cancel();
             await controller.stopCameraRecording();
-
+            Get.to(Loading(),binding: MainBinding());
           },
           child: Text(
             "촬영 종료",

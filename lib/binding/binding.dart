@@ -3,15 +3,28 @@ import 'package:untitled_cct/controller/controller.dart';
 import 'package:untitled_cct/repository/repository.dart';
 
 
-class Binding extends Bindings{
+class MainBinding extends Bindings{
   @override
   void dependencies() {
     // TODO: implement dependencies
-    Get.lazyPut<MainController>(() {
+    Get.lazyPut(() {
       return MainController(
-        repository: MainRepository()
+        repository: MainRepository(),
       );
-    });
+    },fenix:true
+
+    );
   }
 }
 
+class PlanBinding extends Bindings{
+  @override
+  void dependencies() {
+    // TODO: implement dependencies
+    Get.lazyPut(() {
+      return PlanController();
+    },fenix:true
+
+    );
+  }
+}

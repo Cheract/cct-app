@@ -93,8 +93,8 @@ class FixCam extends GetView<MainController> {
                           _startButton()
                         ],
                       )
-
-                    ],),
+                    ],
+                    ),
                   ),
                   Column(
                     children: [
@@ -105,7 +105,8 @@ class FixCam extends GetView<MainController> {
                               curStep: 2,
                               width: Get.width * 0.7,
                               color: Color(0xff373EFF),
-                              titles: controller.stepper)),
+                              titles: controller.stepper)
+                      ),
                     ],
                   ),
                 ],

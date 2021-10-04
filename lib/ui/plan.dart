@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:status_change/status_change.dart';
 import 'package:untitled_cct/controller/controller.dart';
+import 'package:untitled_cct/repository/repository.dart';
 import 'package:untitled_cct/ui/utils.dart';
 
-class Plan extends GetView<MainController> {
+class Plan extends GetView<PlanController> {
   const Plan({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+      return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset : false,
         body: SizedBox(

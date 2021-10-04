@@ -171,7 +171,7 @@ class MethodSelection extends GetView<MainController> {
           onPressed: () async {
               print(controller.formKey_cct_login.currentState!.validate());
               if(controller.formKey_cct_login.currentState!.validate()){
-                Get.toNamed("/plan");
+                Get.offNamed("/plan");
               }else{
                 //Get.toNamed("/plan");
               }

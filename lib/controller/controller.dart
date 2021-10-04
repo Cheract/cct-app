@@ -5,7 +5,28 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:stop_watch_timer/stop_watch_timer.dart';
 import 'package:untitled_cct/repository/repository.dart';
-
+class PlanController extends GetxController{
+  //for main pages
+  var stepper = ["일정 선택","핸드폰 고정","복약 녹화"];
+  var currentStep = 0;
+  var nowCheckedIndex = 0.obs;
+  var dateSelection = [{
+    "date":"10/1(월) 아침",
+    "isDone":true
+  },{
+    "date":"10/1(월) 점심",
+    "isDone":true
+  },{
+    "date":"10/1(월) 저녁",
+    "isDone":false
+  },{
+    "date":"10/2(화) 아침",
+    "isDone":false
+  },{
+    "date":"10/2(화) 점심",
+    "isDone":false
+  }];
+}
 class MainController extends GetxController {
   final MainRepository repository;
 
@@ -53,6 +74,7 @@ class MainController extends GetxController {
   var researchCheck3 = false.obs;
   //Cam
   CameraController? cameraController;
+  XFile? videofile;
   var camInitialized = false.obs;
   var onSubmitting = false.obs;
   var isRecognized = false.obs;
@@ -60,6 +82,9 @@ class MainController extends GetxController {
 
   var start = 60.obs;
   Timer? timer;
+
+  var diagTime = 3.obs;
+
   void startTimer() {
     const oneSec = const Duration(seconds: 1);
     timer=Timer.periodic(
@@ -69,6 +94,21 @@ class MainController extends GetxController {
           timer.cancel();
         } else {
           start(start.value-1);
+        }
+      },
+    );
+  }
+
+  void DiagTimer(context,{dialog}) {
+    const oneSec = const Duration(seconds: 1);
+    timer=Timer.periodic(
+      oneSec,
+          (Timer timer) {
+        if (diagTime.value == 0) {
+          showPopupDiag(context,dialog:dialog);
+          timer.cancel();
+        } else {
+          diagTime(diagTime.value-1);
         }
       },
     );
@@ -87,11 +127,18 @@ class MainController extends GetxController {
       });
     }
   }
+  void showPopupDiag(context,{dialog}){
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return dialog;
+        });
+  }
   Future<void> stopCameraRecording()async{
-    XFile videofile = await cameraController!.stopVideoRecording();
-    print(videofile.path);
+    videofile = await cameraController!.stopVideoRecording();
+    print(videofile!.path);
     //await GallerySaver.saveVideo(videofile.path);
-    var recVid = File(videofile.path);
+    var recVid = File(videofile!.path);
     print(recVid);
   }
   @override
