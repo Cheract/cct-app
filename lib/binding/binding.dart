@@ -28,3 +28,26 @@ class PlanBinding extends Bindings{
     );
   }
 }
+class CamBinding extends Bindings{
+  @override
+  void dependencies() {
+    // TODO: implement dependencies
+    Get.lazyPut(() {
+      return CamController();
+    },fenix:true
+
+    );
+  }
+}
+
+class ResearchBinding extends Bindings{
+  @override
+  void dependencies() {
+    // TODO: implement dependencies
+    Get.lazyPut(() {
+      return ResearchController();
+    },fenix:true
+
+    );
+  }
+}

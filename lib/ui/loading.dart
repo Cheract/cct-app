@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:untitled_cct/controller/controller.dart';
 
-class Loading extends GetView<MainController> {
+class Loading extends GetView<CamController> {
   const Loading({Key? key}) : super(key: key);
 
   @override

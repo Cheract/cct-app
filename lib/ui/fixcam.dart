@@ -4,7 +4,7 @@ import 'package:status_change/status_change.dart';
 import 'package:untitled_cct/controller/controller.dart';
 import 'package:untitled_cct/ui/utils.dart';
 
-class FixCam extends GetView<MainController> {
+class FixCam extends GetView<CamController> {
   const FixCam({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {

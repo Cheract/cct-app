@@ -78,7 +78,7 @@ class Plan extends GetView<PlanController> {
           onPressed: () async {
             if(controller.dateSelection[controller.nowCheckedIndex.value]["isDone"]==false){
               controller.currentStep=2;
-              Get.toNamed("/research");
+              Get.offNamed("/research");
             }else{
 
             }

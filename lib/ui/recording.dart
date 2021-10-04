@@ -5,7 +5,7 @@ import 'package:stop_watch_timer/stop_watch_timer.dart';
 import 'package:untitled_cct/controller/controller.dart';
 import 'package:untitled_cct/ui/utils.dart';
 
-class Record extends GetView<MainController> {
+class Record extends GetView<CamController> {
   const Record({Key? key}) : super(key: key);
 
   @override

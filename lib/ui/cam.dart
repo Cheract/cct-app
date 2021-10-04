@@ -10,7 +10,7 @@ import 'loading.dart';
 
 
 
-class Cam extends GetView<MainController> {
+class Cam extends GetView<CamController> {
   const Cam({Key? key}) : super(key: key);
 
   @override

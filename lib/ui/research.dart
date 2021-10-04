@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:untitled_cct/controller/controller.dart';
 
-class Research extends GetView<MainController> {
+class Research extends GetView<ResearchController> {
   const Research({Key? key}) : super(key: key);
 
   @override
@@ -211,7 +211,7 @@ class Research extends GetView<MainController> {
                       ),
                       SizedBox(width: Get.width * .5,
                         child: _startButton(onPressed: () async {
-                          Get.toNamed("/fixcam");
+                          Get.offNamed("/fixcam");
                         }, child: Text("다음",textAlign: TextAlign.center,
                             style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold)),
                             color: Color(0xff373EFF)

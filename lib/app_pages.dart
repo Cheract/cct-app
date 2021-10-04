@@ -22,9 +22,9 @@ class AppPages {
   static final pages = [
     GetPage(name: Routes.INITIAL, page: () => LoginStep(),bindings: [MainBinding()]),
     GetPage(name: Routes.PLAN, page: () => Plan(),bindings: [PlanBinding()]),
-    GetPage(name: Routes.RESEARCH, page: () => Research(),bindings: [MainBinding()]),
-    GetPage(name: Routes.FIXCAM, page: () => FixCam(),bindings: [MainBinding()]),
-    GetPage(name: Routes.RECORD, page: () => Record(),bindings: [MainBinding()]),
-    GetPage(name: Routes.CAM, page: () => Cam(),bindings: [MainBinding()]),
+    GetPage(name: Routes.RESEARCH, page: () => Research(),bindings: [ResearchBinding()]),
+    GetPage(name: Routes.FIXCAM, page: () => FixCam(),bindings: [CamBinding()]),
+    GetPage(name: Routes.RECORD, page: () => Record(),bindings: [CamBinding()]),
+    GetPage(name: Routes.CAM, page: () => Cam(),bindings: [CamBinding()]),
   ];
 }
