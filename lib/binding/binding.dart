@@ -33,8 +33,10 @@ class CamBinding extends Bindings{
   void dependencies() {
     // TODO: implement dependencies
     Get.lazyPut(() {
-      return CamController();
-    },fenix:true
+      return CamController(
+        repository: CamRepository(),
+      );
+    }
 
     );
   }
@@ -46,7 +48,7 @@ class ResearchBinding extends Bindings{
     // TODO: implement dependencies
     Get.lazyPut(() {
       return ResearchController();
-    },fenix:true
+    },fenix:false
 
     );
   }

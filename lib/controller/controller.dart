@@ -5,27 +5,28 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:stop_watch_timer/stop_watch_timer.dart';
 import 'package:untitled_cct/repository/repository.dart';
+var dateSelec = [{
+  "date":"10/1(월) 아침",
+  "isDone":true
+},{
+  "date":"10/1(월) 점심",
+  "isDone":true
+},{
+  "date":"10/1(월) 저녁",
+  "isDone":false
+},{
+  "date":"10/2(화) 아침",
+  "isDone":false
+},{
+  "date":"10/2(화) 점심",
+  "isDone":false
+}];
 class PlanController extends GetxController{
   //for main pages
   var stepper = ["일정 선택","핸드폰 고정","복약 녹화"];
   var currentStep = 0;
   var nowCheckedIndex = 0.obs;
-  var dateSelection = [{
-    "date":"10/1(월) 아침",
-    "isDone":true
-  },{
-    "date":"10/1(월) 점심",
-    "isDone":true
-  },{
-    "date":"10/1(월) 저녁",
-    "isDone":false
-  },{
-    "date":"10/2(화) 아침",
-    "isDone":false
-  },{
-    "date":"10/2(화) 점심",
-    "isDone":false
-  }];
+  var dateSelection = dateSelec;
   @override
   Future<void> onInit() async {
     super.onInit();
@@ -48,6 +49,7 @@ class ResearchController extends GetxController{
 }
 class CamController extends GetxController{
   //
+  final repository;
   var stepper = ["일정 선택","핸드폰 고정","복약 녹화"];
   final meal =true.obs;
   var researchIndex = 0.obs;
@@ -56,21 +58,26 @@ class CamController extends GetxController{
   var researchCheck1 = false.obs;
   var researchCheck2 = false.obs;
   var researchCheck3 = false.obs;
-
+  CamController({required this.repository}) : assert(repository != null);
   //Cam
   CameraController? cameraController;
   XFile? videofile;
+  File? fileForSend;
   var camInitialized = false.obs;
   var onSubmitting = false.obs;
   var isRecognized = false.obs;
   var userFaceInformation = "".obs;
 
-  var start = 60.obs;
+  var start = 10.obs;
   Timer? timer;
 
   var diagTime = 3.obs;
   var diagSuccessTime = 3.obs;
 
+  sendTheVideo() async {
+    var resForUploading = await repository.sendVideo(fileForSend);
+    return resForUploading;
+  }
   void startTimer() {
     const oneSec = const Duration(seconds: 1);
     timer=Timer.periodic(
@@ -136,11 +143,12 @@ class CamController extends GetxController{
         });
   }
   Future<void> stopCameraRecording()async{
-    videofile = await cameraController!.stopVideoRecording();
+    videofile= await cameraController!.stopVideoRecording();
     print(videofile!.path);
     //await GallerySaver.saveVideo(videofile.path);
-    var recVid = File(videofile!.path);
-    print(recVid);
+    fileForSend = File(videofile!.path);
+
+    print("용량 : ${await fileForSend!.length()}");
   }
   @override
   Future<void> onInit() async {

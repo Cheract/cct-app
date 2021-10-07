@@ -1,8 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.untitled_cct">
    <application
-        android:label="untitled_cct"
-        android:icon="@mipmap/ic_launcher">
+        android:label="CCT"
+        android:icon="@drawable/whitewhale">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

@@ -20,3 +20,14 @@ class MainRepository {
     }
   }
 }
+
+class CamRepository {
+
+  CamRepository();
+
+  Future<dynamic> sendVideo(fileForSend) async {
+    var response = await Dio().post(baseUrl+"/upload",
+        data: {'video':'${fileForSend}',});
+    return response;
+  }
+}

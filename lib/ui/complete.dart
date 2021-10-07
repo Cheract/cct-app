@@ -51,7 +51,7 @@ class Complete extends StatelessWidget {
                     minWidth: Get.width*.9,
                     padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
                     onPressed: () async {
-                      Get.offNamed("/plan");
+                      Get.offAllNamed("/plan");
                     },
                     child: Text(
                       "확인",

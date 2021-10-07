@@ -12,8 +12,8 @@ class Research extends GetView<ResearchController> {
       return SafeArea(
           child: Obx((){
             if(controller.researchIndex.value ==0)return _pageOne();
-            else if(controller.researchIndex.value ==1) return _pageTwo();
-            else if(controller.researchIndex.value ==2) return _pageThree();
+            else if(controller.researchIndex.value ==1) return _pageThree();
+            //else if(controller.researchIndex.value ==2) return _pageThree();
             else return Container();
           })
       );
@@ -189,13 +189,13 @@ class Research extends GetView<ResearchController> {
                   ],
                 ),
               ),
-              Obx(() =>
+
                   Column(
                     children: [
                       SizedBox(height: Get.height * 0.15),
                       _userSymtoms()
                     ],
-                  )),
+                  ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [

@@ -39,16 +39,20 @@ class Cam extends GetView<CamController> {
                     height: 0.25 * Get.height,
                     child: Column(
                       children: [
-                        Obx((){
+                        Obx( () {
                           if(controller.start.value==0){
+                            controller.timer!.cancel();
                             controller.stopCameraRecording();
-                            Get.to(Loading(),binding: MainBinding());
                           }
-                          return Text(
+                          return controller.start.value==0? Text(""):Text(
                               "${(controller.start.value/60).toInt()}:"
                                   "${(controller.start.value-(controller.start.value/60).toInt()*controller.start.value).toString().padLeft(2,'0')}"
-                              ,style:TextStyle(fontSize:48,color:Colors.white,fontWeight: FontWeight.bold));}),
-                        Text("자동 촬영 중 입니다.",style:TextStyle(fontSize:20,color:Colors.white)),
+                              ,style:TextStyle(fontSize:48,color:Colors.white,fontWeight: FontWeight.bold));
+                        }),
+                        Obx( () {
+                          return controller.start.value==0?
+                          Text("촬영이 완료되었습니다.",style:TextStyle(fontSize:20,color:Colors.white)):
+                          Text("자동 촬영 중 입니다.",style:TextStyle(fontSize:20,color:Colors.white));}),
                         _submitButton(),
                       ],
                     ))),
@@ -70,12 +74,15 @@ class Cam extends GetView<CamController> {
           minWidth: Get.width,
           padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
           onPressed: () async {
-            controller.timer!.cancel();
-            await controller.stopCameraRecording();
-            Get.to(Loading(),binding: MainBinding());
+            if(controller.start.value!=0){
+              controller.timer!.cancel();
+              await controller.stopCameraRecording();
+            }
+
+            Get.to(() => Loading());
           },
           child: Text(
-            "촬영 종료",
+            "제출하기",
             textAlign: TextAlign.center,
             style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
           ),

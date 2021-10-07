@@ -77,6 +77,9 @@ class Plan extends GetView<PlanController> {
           padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
           onPressed: () async {
             if(controller.dateSelection[controller.nowCheckedIndex.value]["isDone"]==false){
+              dateSelec[controller.nowCheckedIndex.value]["isDone"]=true;
+              //controller.dateSelection[controller.nowCheckedIndex.value]["isDone"]=true;
+              print(controller.dateSelection[2]);
               controller.currentStep=2;
               Get.offNamed("/research");
             }else{

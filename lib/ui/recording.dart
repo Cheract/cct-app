@@ -157,7 +157,7 @@ class Record extends GetView<CamController> {
               onPressed: () async {
                 await controller.cameraController!.startVideoRecording();
                 controller.startTimer();
-                Get.toNamed("/cam");
+                Get.offNamed("/cam");
               },
               child: Text(
                 "촬영 준비",
