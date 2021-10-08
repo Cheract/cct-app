@@ -68,7 +68,7 @@ class CamController extends GetxController{
   var isRecognized = false.obs;
   var userFaceInformation = "".obs;
 
-  var start = 10.obs;
+  var start = 60.obs;
   Timer? timer;
 
   var diagTime = 3.obs;
@@ -96,8 +96,9 @@ class CamController extends GetxController{
     const oneSec = const Duration(seconds: 1);
     timer=Timer.periodic(
       oneSec,
-          (Timer timer) {
+          (Timer timer) async {
         if (diagTime.value == 0) {
+          await sendTheVideo();
           showPopupDiag(context,dialog:dialog);
           timer.cancel();
         } else {
@@ -111,8 +112,10 @@ class CamController extends GetxController{
     const oneSec = const Duration(seconds: 1);
     timer=Timer.periodic(
       oneSec,
-          (Timer timer) {
+          (Timer timer) async {
         if (diagSuccessTime.value == 0) {
+          await sendTheVideo();
+          showPopupDiag(context,dialog:dialog);
           showPopupDiag(context,dialog:dialog);
           timer.cancel();
         } else {

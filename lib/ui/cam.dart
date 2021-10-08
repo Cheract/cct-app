@@ -78,7 +78,6 @@ class Cam extends GetView<CamController> {
               controller.timer!.cancel();
               await controller.stopCameraRecording();
             }
-
             Get.to(() => Loading());
           },
           child: Text(

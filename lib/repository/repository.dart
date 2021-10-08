@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 
-final baseUrl="https://10.0.2.2:3000";
+final baseUrl="http://13.124.252.101:8081";
 
 class MainRepository {
 
@@ -14,7 +14,7 @@ class MainRepository {
           data: {'userAccount':'${userAccount}',
             'userPassword':'${userPassword}',});
       print(response);
-      return response.data;
+      return response;
     }catch(e){
       print(e);
     }
@@ -26,8 +26,12 @@ class CamRepository {
   CamRepository();
 
   Future<dynamic> sendVideo(fileForSend) async {
-    var response = await Dio().post(baseUrl+"/upload",
-        data: {'video':'${fileForSend}',});
+    var formData = FormData.fromMap({
+      "video": await MultipartFile.fromFile(fileForSend.path,filename:"${fileForSend.path}")
+    });
+    var response = await Dio().post(baseUrl+"/video",
+        data: formData);
+    print(response);
     return response;
   }
 }

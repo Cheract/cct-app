@@ -9,7 +9,6 @@ class Loading extends GetView<CamController> {
   @override
   Widget build(BuildContext context) {
     //controller.DiagTimer(context,dialog:customedDialog(context));//실패시
-
     controller.DiagSuccessTimer(context,dialog:Complete()); //성공시
 
     return Scaffold(
